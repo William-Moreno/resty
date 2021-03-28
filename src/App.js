@@ -14,14 +14,14 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      history: ls.get('history') || [],
+      history: [],
       request: {},
       isLoading: false,
     }
   }
 
   componentDidMount() {
-    this.setState({ history: ls.get('history') });
+    this.setState({ history: ls.get('history') || [] });
   }
 
   updateResults = (request) => {

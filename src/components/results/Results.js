@@ -3,19 +3,20 @@ import JSONPretty, { propTypes } from 'react-json-pretty';
 import './results.scss';
 import { If, Else, IsObjectEmpty } from '../if/If.js';
 
-export const Results = ({ result, toggle }) => {
+export const Results = ({ request, toggle }) => {
+  console.log('results page', request);
   return (
     <div className="App.results">
-      <If condition={result.body}>
+      <If condition={request.body}>
         <h3 className="results-title">Results Window</h3>
           <h4 className="response-sections">Count</h4>
-          <JSONPretty id="json-pretty1" className="json-pretty" data={result.body.count}></JSONPretty>
+          <JSONPretty id="json-pretty1" className="json-pretty" data={request}></JSONPretty>
           {/* <h4 className="response-headers">Response Headers</h4>
-          <JSONPretty id="json-pretty1" className="json-pretty" data={this.props.request.body.header}></JSONPretty> */}
+          <JSONPretty id="json-pretty1" className="json-pretty" data={request.body.header}></JSONPretty> */}
           <h4 className="response-body">Results</h4>
-          <JSONPretty id="json-pretty2" className="json-pretty" data={result.body.results}></JSONPretty>
+          <JSONPretty id="json-pretty2" className="json-pretty" data={request}></JSONPretty>
       </If>
-      <Else condition={result.body}>
+      <Else condition={request.body}>
         <h3 className="no-results">No Data to Display</h3>
       </Else>
     </div>

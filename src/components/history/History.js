@@ -2,6 +2,7 @@ import React from 'react';
 import './history.scss';
 
 export const History = ({ history }) => {
+  console.log('history page', history);
   return (
     <div className="history-frame">
       <h3>History Header</h3>
