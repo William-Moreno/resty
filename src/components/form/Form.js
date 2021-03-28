@@ -14,12 +14,10 @@ class Form extends React.Component {
   }
 
   handleChange = (e) => {
-
     this.setState({ url: e.target.value });
   }
 
   handleMethodChange = (e) => {
-
     this.setState({ method: e.target.value });
   }
 
