@@ -1,0 +1,36 @@
+.App-results {
+  position: relative;
+  float: right;
+  border: 1px #000 solid;
+  margin-top: 12px;
+  margin-right: 5%;
+  padding: 6px;
+  box-shadow: 4px 4px 6px #222;
+  height: 53.5vh;
+  width: 40vw;
+  text-align: left;
+  overflow: scroll;
+  p {
+    margin: 1px auto;
+  }
+}
+
+.results-title {
+  position: fixed;
+  background-color: #ddd;
+  padding: 2px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h4 {
+  font-size: 12px;
+}
+
+.json-pretty {
+  font-size: 10px;
+}
+
+.response-headers {
+  padding-top: 18px;
+}
