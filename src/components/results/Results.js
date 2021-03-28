@@ -6,8 +6,8 @@ import { If, Else, IsObjectEmpty } from '../if/If.js';
 export const Results = ({ request, toggle }) => {
   console.log('results page', request);
   return (
-    <div className="App.results">
-      <If condition={request.body}>
+    <div className="App-results">
+      <If condition={IsObjectEmpty(request.body)}>
         <h3 className="results-title">Results Window</h3>
           <h4 className="response-sections">Count</h4>
           <JSONPretty id="json-pretty1" className="json-pretty" data={request.body.count}></JSONPretty>
@@ -16,7 +16,7 @@ export const Results = ({ request, toggle }) => {
           <h4 className="response-body">Results</h4>
           <JSONPretty id="json-pretty2" className="json-pretty" data={request.body.results}></JSONPretty>
       </If>
-      <Else condition={request.body}>
+      <Else condition={IsObjectEmpty(request.body)}>
         <h3 className="no-results">No Data to Display</h3>
       </Else>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import ls from 'local-storage';
 import { Route } from 'react-router-dom';
 
@@ -14,15 +14,17 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      history: [],
-      request: {},
+      history: ls.get('history') || [],
+      request: {
+        body: {},
+      },
       isLoading: false,
     }
   }
 
-  componentDidMount() {
-    this.setState({ history: ls.get('history') || [] });
-  }
+  // componentDidMount() {
+  //   this.setState({ history: ls.get('history') || [] });
+  // }
 
   updateResults = (request) => {
 
