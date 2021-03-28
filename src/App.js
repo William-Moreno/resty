@@ -6,8 +6,8 @@ import { Route } from 'react-router-dom';
 import Header from './components/header/Header.js';
 import Footer from './components/footer/Footer.js';
 import Form from './components/form/Form.js';
-import Results from './components/results/Results.js';
-import History from './components/history/History.js';
+import { Results } from './components/results/Results.js';
+import { History } from './components/history/History.js';
 import Help from './components/help/Help.js';
 
 class App extends React.Component {

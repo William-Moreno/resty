@@ -20,4 +20,4 @@ export const Results = ({ result, toggle }) => {
       </Else>
     </div>
   )
-}
+};

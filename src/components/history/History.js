@@ -11,4 +11,4 @@ export const History = ({ history }) => {
         </li>)}
     </div>
   )
-}
+};
