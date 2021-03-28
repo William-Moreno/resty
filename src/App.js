@@ -22,18 +22,16 @@ class App extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.setState({ history: ls.get('history') || [] });
-  // }
 
   updateResults = (request) => {
 
+    let historyChecker = ls.get('history');
     let historyUpdate;
 
-    if(!this.state.history.includes(request)) {
-      historyUpdate = [ request, ...this.state.history];
+    if(historyChecker.includes(request)) {
+      historyUpdate = [...this.state.history];
     } else {
-      historyUpdate = [request];
+      historyUpdate = [ request, ...this.state.history];
     }
 
     this.setState({
