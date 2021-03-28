@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import ls from 'local-storage';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Header from './components/header/Header.js';
 import Footer from './components/footer/Footer.js';
@@ -22,18 +22,16 @@ class App extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.setState({ history: ls.get('history') || [] });
-  // }
 
   updateResults = (request) => {
 
+    let historyChecker = ls.get('history');
     let historyUpdate;
 
-    if(!this.state.history.includes(request)) {
-      historyUpdate = [ request, ...this.state.history];
+    if(historyChecker.includes(request)) {
+      historyUpdate = [...this.state.history];
     } else {
-      historyUpdate = [request];
+      historyUpdate = [ request, ...this.state.history];
     }
 
     this.setState({
@@ -53,27 +51,29 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Route exact path="/history">
-          <div className="history-page">
-            <History history={this.state.history} />
-          </div>
-        </Route>
-        <Route exact path="/help">
-          <div className="help-page">
-            <Help />
-          </div>
-        </Route>
-        <Route exact path="/">
-          <main className="App-main">
-            <div className="form-area">
-              <Form updateResults={this.updateResults} history={this.state.history} toggle={this.toggle} />
-            </div>
-            <div className="history-results">
+        <Switch>
+          <Route path="/history">
+            <div className="history-page">
               <History history={this.state.history} />
-              <Results request={this.state.request} toggle={this.isLoading} />
             </div>
-          </main>
-        </Route>
+          </Route>
+          <Route path="/help">
+            <div className="help-page">
+              <Help />
+            </div>
+          </Route>
+          <Route path="/">
+            <main className="App-main">
+              <div className="form-area">
+                <Form updateResults={this.updateResults} history={this.state.history} toggle={this.toggle} />
+              </div>
+              <div className="history-results">
+                <History history={this.state.history} />
+                <Results request={this.state.request} toggle={this.isLoading} />
+              </div>
+            </main>
+          </Route>
+        </Switch>
         <Footer />
       </div>
     );
