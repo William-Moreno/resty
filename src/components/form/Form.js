@@ -26,6 +26,8 @@ class Form extends React.Component {
     e.preventDefault();
     this.props.toggle();
 
+    this.checkerUtility();
+
     let request;
     
     if(this.state.method === 'GET') {
@@ -46,7 +48,20 @@ class Form extends React.Component {
       error: false,
     });
     this.props.toggle();
+    this.setState({
+      url: '',
+      method: '',
+    });
+  }
 
+  checkerUtility = () => {
+    if(this.props.historySearch){
+      this.setState({
+        url: this.props.historySearch.url,
+        method: this.props.historySearch.method,
+      });
+      console.log(this.state.url, this.state.method);
+    }
   }
 
   render() {
