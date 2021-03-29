@@ -4,7 +4,6 @@ import './results.scss';
 import { If, Else, IsObjectEmpty } from '../if/If.js';
 
 export const Results = ({ request, toggle }) => {
-  console.log('results page', request);
   return (
     <div className="App-results">
       <If condition={IsObjectEmpty(request.body)}>
