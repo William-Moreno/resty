@@ -6,7 +6,7 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: '',
+      url: this.props.historySearch.url || '',
       method: this.props.historySearch.method || 'GET',
       body: {},
       error: {},
@@ -15,16 +15,18 @@ class Form extends React.Component {
   }
 
   handleChange = (e) => {
-    this.setState({ url: e.target.value });
+    this.setState({ url: this.props.historySearch.url || e.target.value });
   }
 
   handleMethodChange = (e) => {
-    this.setState({ method: e.target.value });
+    this.setState({ method: this.props.historySearch.method || e.target.value });
   }
 
   handleSubmit = async (e) => {
     e.preventDefault();
     this.props.toggle();
+
+    this.checkerUtility();
 
     let request;
     
@@ -46,7 +48,20 @@ class Form extends React.Component {
       error: false,
     });
     this.props.toggle();
+    this.setState({
+      url: '',
+      method: '',
+    });
+  }
 
+  checkerUtility = () => {
+    if(this.props.historySearch){
+      this.setState({
+        url: this.props.historySearch.url,
+        method: this.props.historySearch.method,
+      });
+      console.log(this.state.url, this.state.method);
+    }
   }
 
   render() {

@@ -13,6 +13,12 @@
     list-style: none;
     margin: 4px auto;
   }
+  
+}
+
+li:hover {
+  color: magenta;
+  cursor: pointer;
 }
 
 .urlEntry {

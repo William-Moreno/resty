@@ -30,19 +30,13 @@ class App extends React.Component {
   updateResults = (request) => {
 
     let historyChecker = ls.get('history') || [];
-    console.log('in', historyChecker);
     let historyUpdate;
-
-    console.log(historyChecker.indexOf(request));
 
     if(historyChecker.indexOf(request) === -1) {
       historyChecker.unshift(request);
-      console.log('added');
     }
     
     historyUpdate = historyChecker;
-
-    console.log('preset ls', historyUpdate);
 
     ls.set('history', historyUpdate);
 
