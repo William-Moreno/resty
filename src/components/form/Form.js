@@ -1,6 +1,6 @@
 import React from 'react';
 import './form.scss';
-import { If, Else, IsObjectEmpty } from '../if/If.js';
+import { If, Else } from '../if/If.js';
 
 class Form extends React.Component {
   constructor(props) {
