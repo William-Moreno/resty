@@ -19,6 +19,7 @@ class Form extends React.Component {
   }
 
   handleMethodChange = (e) => {
+    e.preventDefault();
     this.setState({ method: this.props.historySearch.method || e.target.value });
   }
 
@@ -26,12 +27,11 @@ class Form extends React.Component {
     e.preventDefault();
     this.props.toggle();
 
-    this.checkerUtility();
 
     let request;
     
-    if(this.state.method === 'GET') {
-      request = await fetch(this.state.url, { method: this.state.method });
+    if(this.state.method === 'GET' || this.state.method === '') {
+      request = await fetch(this.state.url, { method: 'GET' });
     } else {
       request = await fetch(this.state.url, {
         method: this.state.method,
@@ -48,21 +48,9 @@ class Form extends React.Component {
       error: false,
     });
     this.props.toggle();
-    this.setState({
-      url: '',
-      method: '',
-    });
+    this.props.voidHistorySearch();
   }
 
-  checkerUtility = () => {
-    if(this.props.historySearch){
-      this.setState({
-        url: this.props.historySearch.url,
-        method: this.props.historySearch.method,
-      });
-      console.log(this.state.url, this.state.method);
-    }
-  }
 
   render() {
     return (

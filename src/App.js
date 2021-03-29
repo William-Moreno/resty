@@ -83,6 +83,12 @@ class App extends React.Component {
   // }
 
 
+  voidHistorySearch(){
+    this.setState({
+      historySearch: {},
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -101,7 +107,7 @@ class App extends React.Component {
           <Route path="/">
             <main className="App-main">
               <div className="form-area">
-                <Form updateResults={this.updateResults} historySearch={this.state.historySearch} toggle={this.toggle} />
+                <Form updateResults={this.updateResults} historySearch={this.state.historySearch} toggle={this.toggle} voidHistorySearch={this.voidHistorySearch} />
               </div>
               <div className="history-results">
                 <History history={this.state.history} populateSearchFromHistory={this.populateSearchFromHistory} />
