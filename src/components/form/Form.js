@@ -1,12 +1,13 @@
 import React from 'react';
 import './form.scss';
+import { If, Else, IsObjectEmpty } from '../if/If.js';
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       url: '',
-      method: 'GET',
+      method: this.props.historySearch.method || 'GET',
       body: {},
       error: {},
       textEntry: '',
@@ -54,7 +55,12 @@ class Form extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <fieldset className="app-url">
           <label>Enter URL</label>
-          <input className="url-input" onChange={this.handleChange} type="text" name="url" value={this.state.url} />
+          <If condition={this.props.historySearch.url}>
+            <input className="url-input" onChange={this.handleChange} type="text" name="url" value={this.props.historySearch.url} />
+          </If>
+          <Else condition={this.props.historySearch.url}>
+            <input className="url-input" onChange={this.handleChange} type="text" name="url" value={this.state.url} />
+          </Else>
           <button type="submit">Go!</button>
           </fieldset>
           <fieldset className="rest-select">

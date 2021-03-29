@@ -66,7 +66,6 @@ class App extends React.Component {
         method: components[0],
       },
     });
-
   }
 
   // updateResults = (request) => {
